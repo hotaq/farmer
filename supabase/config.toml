@@ -1,0 +1,90 @@
+# Supabase Configuration File
+# This file contains the configuration for the Agri-Connect Supabase project
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+smtp_port = 54325
+pop3_port = 54326
+
+[storage]
+enabled = true
+port = 54327
+image_transformation = {
+  enabled = true
+}
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://agri-connect.vercel.app"]
+jwt_expiry = 3600
+enable_signup = true
+enable_email_confirmations = true
+enable_email_change_confirmations = true
+enable_phone_confirmations = false
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+
+# Email templates
+[auth.email.template.invite]
+subject = "You have been invited to Agri-Connect"
+content_path = "./supabase/templates/invite.html"
+
+[auth.email.template.confirmation]
+subject = "Confirm your Agri-Connect account"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Reset your Agri-Connect password"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.email.template.email_change]
+subject = "Confirm your new email address"
+content_path = "./supabase/templates/email_change.html"
+
+# External OAuth providers
+[auth.external.google]
+enabled = false
+client_id = ""
+secret = ""
+redirect_uri = "http://localhost:54321/auth/v1/callback"
+
+[auth.external.github]
+enabled = false
+client_id = ""
+secret = ""
+redirect_uri = "http://localhost:54321/auth/v1/callback"
+
+[edge_runtime]
+enabled = true
+port = 54328
+
+[analytics]
+enabled = false
+port = 54329
+vector_port = 54330
+# Setup instructions:
+# 1. Create a new Supabase project at https://supabase.com
+# 2. Copy your project URL and anon key to .env.local
+# 3. Run the schema.sql file in your Supabase SQL editor
+# 4. Set up storage buckets and policies
+# 5. Configure email templates

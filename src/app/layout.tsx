@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ReactQueryProvider } from "@/lib/react-query";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
+import Navbar from "@/components/layout/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({
       >
         <ErrorBoundary>
           <ReactQueryProvider>
+            <Navbar />
             {children}
           </ReactQueryProvider>
         </ErrorBoundary>
